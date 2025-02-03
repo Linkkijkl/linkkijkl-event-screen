@@ -1,0 +1,38 @@
+name: Deploy to production
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./  
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Build
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: npm install
+      - run: npm run build
+
+      - name: Deploy
+        uses: up9cloud/action-rsync@master
+        env:
+          SOURCE: ./build/
+          ARGS_MORE: --checksum
+          VERBOSE: true
+          
+          #HOST: ${{ secrets.DEPLOY_SSH_HOST }}
+          #PORT: ${{ secrets.DEPLOY_SSH_PORT }}
+          HOST: linkkijkl.fi
+          PORT: 40404
+          USER: ${{ secrets.DEPLOY_USER }}
+          KEY: ${{ secrets.SSH_KEY }}
+          TARGET: ${{ secrets.DEPLOY_TARGET }}
+
