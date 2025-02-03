@@ -16,9 +16,9 @@ const Lunch = ({ name, data, className }) => {
       {data?.map((setMenu, i) => (
         <div key={i} style={{ marginBottom: '4vh' }}>
           <ul>
-            <li>{setMenu.Name}{setMenu.Name && ' // '}{setMenu.Price}</li>
-            {setMenu.Meals.map((meal, j) => 
-              <li key={j}>{meal.Name}</li>)}
+            <li>{setMenu.name}{setMenu.name && ' // '}{setMenu.price}</li>
+            {setMenu.meals.map((meal, j) => 
+              <li key={j}>{meal.name}</li>)}
           </ul>
         </div>
       ))}
