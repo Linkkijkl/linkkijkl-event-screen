@@ -38,7 +38,10 @@ function App() {
     algoSponsors: fetchAlgoSponsors,
     bistroLunch: fetchBistroLunch,
     piatoLunch: fetchPiatoLunch,
-  }), [ fetchLinkkiEvents, fetchAlgoEvents, fetchLinkkiSponsors, fetchAlgoSponsors, fetchBistroLunch, fetchPiatoLunch ]);
+  }), [ fetchLinkkiEvents, fetchAlgoEvents,
+    fetchLinkkiSponsors, fetchAlgoSponsors,
+    fetchBistroLunch, fetchPiatoLunch
+  ]);
 
   const [ data, isLoading ] = useFetchData(fetchFunctions);
 
