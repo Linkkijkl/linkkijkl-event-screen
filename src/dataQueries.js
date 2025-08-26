@@ -13,7 +13,7 @@ export const keepAlive = () => {
 
 /**
  * Fetches lunch data from the API
- * @param route a route to fetch the lunch from, e.g. 'piato' or 'maija'
+ * @param route a route to fetch the lunch from, e.g. 'piato' or 'bistro'
  * @returns {Promise<unknown>} a promise that resolves with the fetched data
  */
 export const getLunchData = route => {

@@ -20,7 +20,7 @@ const DataComponent = ({ name, data, className, Component }) =>
   <Component name={name} data={data} className={className} />;
 
 function App() {
-  const [ showAlternate, setShowAlternate ] = useState(false);
+  const [ showAlternate, setShowAlternate ] = useState(true);
   const [ showAlternateColor, setShowAlternateColor ] = useState(false);
   const [ isTransitioning, setIsTransitioning ] = useState(false);
 
@@ -28,7 +28,7 @@ function App() {
   const fetchAlgoEvents = useCallback(() => getEventData('algo'), []);
   const fetchLinkkiSponsors = useCallback(() => getSponsors('linkki'), []);
   const fetchAlgoSponsors = useCallback(() => getSponsors('algo'), []);
-  const fetchMaijaLunch = useCallback(() => getLunchData('maija'), []);
+  const fetchBistroLunch = useCallback(() => getLunchData('bistro'), []);
   const fetchPiatoLunch = useCallback(() => getLunchData('piato'), []);
 
   const fetchFunctions = useMemo(() => ({
@@ -36,9 +36,9 @@ function App() {
     algoEvents: fetchAlgoEvents,
     linkkiSponsors: fetchLinkkiSponsors,
     algoSponsors: fetchAlgoSponsors,
-    maijaLunch: fetchMaijaLunch,
+    bistroLunch: fetchBistroLunch,
     piatoLunch: fetchPiatoLunch,
-  }), [ fetchLinkkiEvents, fetchAlgoEvents, fetchLinkkiSponsors, fetchAlgoSponsors, fetchMaijaLunch, fetchPiatoLunch ]);
+  }), [ fetchLinkkiEvents, fetchAlgoEvents, fetchLinkkiSponsors, fetchAlgoSponsors, fetchBistroLunch, fetchPiatoLunch ]);
 
   const [ data, isLoading ] = useFetchData(fetchFunctions);
 
@@ -87,7 +87,7 @@ function App() {
         </div>
         {showAlternate ? <>
           <DataComponent name={'Algon'} data={data.algoEvents} className='algo' Component={Events}/>
-          <DataComponent name={'Maija'} data={data.maijaLunch} className='algo' Component={Lunch}/>
+          <DataComponent name={'Bistro Mattilanniemi'} data={data.bistroLunch} className='algo' Component={Lunch}/>
           <DataComponent data={data.algoSponsors} className='algo' Component={Sponsors}/>
         </> : <>
           <DataComponent name={'Linkin'} data={data.linkkiEvents} className='linkki' Component={Events}/>
